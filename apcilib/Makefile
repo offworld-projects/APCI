@@ -1,4 +1,4 @@
-all: axiodac axiodac_irq pcie_dio_48s mpcie_quad_8 mpcie-ii-16-irq pcie-idio-24-irq mpcie-dio-24s-irq mpcie_aio16_16f_dma mpcie_aio16_16f pcie_iiro_16_irq irq check check_dma dac
+all: axiodac axiodac_irq pcie_dio_48s mpcie_quad_8 mpcie-ii-16-irq mpcie-iiro-8 mpcie-idio-4 pcie-idio-24-irq mpcie-dio-24s-irq mpcie_aio16_16f_dma mpcie_aio16_16f pcie_iiro_16_irq irq check check_dma dac
 
 ifneq ("$(wildcard /etc/redhat-release)","")
     REDHAT_VERSION = $(shell cat /etc/redhat-release | grep  -o "[0-9]*" | head -1)
@@ -36,6 +36,12 @@ irq: irq.c apcilib.h apcilib.c
 mpcie-ii-16-irq: mpcie-ii-16-irq.c apcilib.h apcilib.c
 	$(GCC) -o mpcie-ii-16-irq mpcie-ii-16-irq.c apcilib.c
 
+mpcie-iiro-8: mpcie-iiro-8.c apcilib.h apcilib.c
+	$(GCC) -o mpcie-iiro-8 mpcie-iiro-8.c apcilib.c
+
+mpcie-idio-4: mpcie-idio-4.c apcilib.h apcilib.c
+	$(GCC) -o mpcie-idio-4 mpcie-idio-4.c apcilib.c
+
 pcie-idio-24-irq: pcie-idio-24-irq.c apcilib.h apcilib.c
 	$(GCC) -o pcie-idio-24-irq pcie-idio-24-irq.c apcilib.c
 
@@ -59,5 +65,5 @@ dac: dac.c apcilib.h apcilib.c
 
 
 clean:
-	rm axiodac axiodac_irq pcie-dio-48s-irq pcie-iiro-16 mpcie_quad_8 mpcie-ii-16-irq pcie-idio-24-irq mpcie-dio-24s-irq mpcie_aio16_16f mpcie_aio16_16f_dma check check_dma irq dac
+	rm axiodac axiodac_irq pcie_dio_48s mpcie_quad_8 mpcie-ii-16-irq mpcie-iiro-8 mpcie-idio-4 pcie-idio-24-irq mpcie-dio-24s-irq mpcie_aio16_16f_dma mpcie_aio16_16f pcie_iiro_16_irq irq check check_dma dac
 
