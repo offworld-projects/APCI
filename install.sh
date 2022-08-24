@@ -15,4 +15,3 @@ make
 
 # install/load
 sudo make install
-export PYTHONPATH="$PYTHONPATH:/usr/local/lib"
