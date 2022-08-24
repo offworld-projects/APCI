@@ -87,3 +87,9 @@ Below is a snipet of the output from the compiled mpcie-dio-24s-irq.c sample cod
 
 The kernel should now load the apci.ko driver module at boot time if there is a supported ACCES PCI device present in the system.
 
+## Verifying kernel module is loaded
+
+```bash
+lsmod | grep apci  # stdout should be non-empty
+modinfo apci  # stdout should not have "ERROR" in it
+```
